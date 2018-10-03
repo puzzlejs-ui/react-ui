@@ -1,2 +1,3 @@
-import Draggable from './lib/Draggable';
-export default Draggable;
+'use strict';
+
+module.exports = require('./dist/puzzle.js');

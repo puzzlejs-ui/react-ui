@@ -1,13 +1,24 @@
 const path = require('path');
+const LowerCaseNamePlugin = require('webpack-lowercase-name');
 
-module.exports = {
+const config = {
 	devtool   : 'source-map',
-	entry     : './index.js',
-	output    : {
-		filename          : './react-draggable-light.js',
-		sourceMapFilename : './react-draggable-light.js.map',
-		library           : 'ReactDraggableLight',
-		libraryTarget     : 'umd'
+	module    : {
+		rules : [
+			{
+				test    : /\.js$/,
+				exclude : /(node_modules)/,
+				use     : {
+					loader: "babel-loader"
+				}
+			}
+		]
+	},
+	resolve   : {
+		alias : {
+			'react'     : path.resolve(__dirname, './node_modules/react'),
+			'react-dom' : path.resolve(__dirname, './node_modules/react-dom')
+		}
 	},
 	externals : {
 		'react'     : {
@@ -23,19 +34,34 @@ module.exports = {
 			root      : 'ReactDOM'
 		}
 	},
-	module    : {
-		rules : [
-			{
-				test    : /\.(?:js).?$/,
-				loader  : 'babel-loader',
-				exclude : /(node_modules)/
-			}
-		]
-	},
-	resolve   : {
-		alias : {
-			'react'     : path.resolve(__dirname, './node_modules/react'),
-			'react-dom' : path.resolve(__dirname, './node_modules/react-dom')
+	plugins: [
+        new LowerCaseNamePlugin()
+    ],
+}
+
+module.exports = [
+	Object.assign({}, config, {
+		entry  : {
+			'Draggable' : './lib/components/Draggable/Draggable.js',
+			'Button'    : './lib/components/Button/Button.js',
+		},
+		output : {
+			path              : path.resolve(__dirname, 'dist/components'),
+			library           : ['Puzzle', '[name]'],
+			filename          : '[lc-name].js',
+			sourceMapFilename : '[lc-name].js.map',
+			libraryTarget     : 'umd',
 		}
-	}
-};
+	}),
+
+	Object.assign({}, config, {
+		entry  : './lib/components/index.js',
+		output : {
+			path              : path.resolve(__dirname, 'dist'),
+			library           : "Puzzle",
+			filename          : 'puzzle.js',
+			sourceMapFilename : 'puzzle.js.map',
+			libraryTarget     : 'umd',
+		}
+	})
+];
