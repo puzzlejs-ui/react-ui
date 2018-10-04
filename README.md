@@ -1,0 +1,1 @@
+# [PuzzleJS](https://reactjs.org/) &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/MarinescuEvghenii/puzzle/blob/master/LICENSE) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/MarinescuEvghenii/puzzle/pulls)
