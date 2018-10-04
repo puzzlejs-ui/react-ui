@@ -59,12 +59,18 @@
 
     .logo {
         width: 50%;
+        min-width: 280px;
         height: auto;
     }
 
     .title {
         font-weight: 100;
-        margin: 40px 0 0 0;
+        margin: 0;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 16px;
+        position: absolute;
     }
 
     .description {
@@ -88,13 +94,14 @@
 </style>
 
 <body>
-<div class="content">
-    <img class="logo" src="images/puzzle-logo.svg">
     <h1 class="title">Puzzle.js</h1>
-    <a class="description" href="https://github.com/MarinescuEvghenii/puzzle" target="_blank" title="GitHub repository">Open source React UI library</a>
     <a href="https://github.com/MarinescuEvghenii/puzzle" class="github" target="_blank" title="GitHub repository">
         <img src="images/github-logo.svg">
     </a>
-</div>
+
+    <div class="content">
+        <img class="logo" src="images/puzzle-logo.svg">
+        <a class="description" href="https://github.com/MarinescuEvghenii/puzzle" target="_blank" title="GitHub repository">Open source React UI library</a>
+    </div>
 </body>
 </html>
