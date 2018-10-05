@@ -1,9 +1,9 @@
 {
   "name": "@puzzlejs/react",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Open source React UI library",
   "main": "index.js",
-  "browser" : "index.js",
+  "browser": "index.js",
   "directories": {
     "lib": "lib",
     "dist": "dist"
@@ -11,7 +11,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prod": "NODE_ENV=production node_modules/.bin/webpack --config scripts/webpack.config.js",
-    "dev": "NODE_ENV=development node_modules/.bin/webpack --config scripts/webpack.config.js"
+    "dev": "NODE_ENV=development node_modules/.bin/webpack --config scripts/webpack.config.js",
+    "watch": "NODE_ENV=development node_modules/.bin/webpack --config scripts/webpack.config.js --watch",
+    "build": "npm run prod && npm run dev"
   },
   "repository": {
     "type": "git",

@@ -1,11 +1,12 @@
 const path = require('path');
-
 const LowerCaseNamePlugin = require('webpack-lowercase-name');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
+const isProd = process.env.NODE_ENV === 'production';
+
 module.exports = {
     mode      : process.env.NODE_ENV,
-    devtool   : 'source-map',
+    devtool   : isProd ? '' : 'source-map',
     profile   : true,
 	module    : {
 		rules : [
@@ -38,10 +39,7 @@ module.exports = {
 			root      : 'ReactDOM'
 		}
 	},
-	plugins: [
-        new LowerCaseNamePlugin()
-    ],
-    optimization: {
+	optimization : !isProd ? {} : {
 		minimizer: [
 			new UglifyJsPlugin({
 				uglifyOptions: {
@@ -51,5 +49,8 @@ module.exports = {
 				}
 			})
 		]
-	}
-}
+	},
+	plugins: [
+        new LowerCaseNamePlugin()
+    ]
+};
