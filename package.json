@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MarinescuEvghenii/puzzle"
+    "url": "git+https://github.com/puzzlejs-ui/react"
   },
   "keywords": [
     "react",
@@ -28,7 +28,7 @@
   "author": "Eugeniu Marinescu",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/MarinescuEvghenii/puzzle/issues"
+    "url": "https://github.com/puzzlejs-ui/react/issues"
   },
   "homepage": "https://www.puzzlejs.com/",
   "devDependencies": {
