@@ -1,5 +1,5 @@
 {
-  "name": "puzzle",
+  "name": "@puzzlejs/react",
   "version": "0.0.1",
   "description": "Open source React UI library",
   "main": "index.js",
