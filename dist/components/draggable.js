@@ -144,15 +144,7 @@ var Draggable =
 function (_PureComponent) {
   _inherits(Draggable, _PureComponent);
 
-  _createClass(Draggable, [{
-    key: "coordinates",
-    get: function get() {
-      return {
-        x: this.state.x,
-        y: this.state.y
-      };
-    }
-  }], [{
+  _createClass(Draggable, null, [{
     key: "propTypes",
     get: function get() {
       return {
@@ -194,6 +186,10 @@ function (_PureComponent) {
     _this.state = {
       x: null,
       y: null,
+      offset: {
+        x: 0,
+        y: 0
+      },
       dragging: false
     };
     _this.initialMouseX = null;
@@ -242,7 +238,7 @@ function (_PureComponent) {
       });
       this.initialMouseX = event.pageX - this.state.x;
       this.initialMouseY = event.pageY - this.state.y;
-      this.props.onDragStart(event, this.coordinates);
+      this.props.onDragStart(event, this.state);
       window.addEventListener("mouseup", this.stopDrag);
       window.addEventListener("mousemove", this.onDrag);
     }
@@ -254,7 +250,7 @@ function (_PureComponent) {
       });
       this.initialMouseX = null;
       this.initialMouseY = null;
-      this.props.onDragStop(event, this.coordinates);
+      this.props.onDragStop(event, this.state);
       window.removeEventListener("mouseup", this.stopDrag);
       window.removeEventListener("mousemove", this.onDrag);
     }
@@ -325,6 +321,8 @@ __webpack_require__.r(__webpack_exports__);
   var currentElHeight = currentElRect.height;
   var containmentElWidth;
   var containmentElHeight;
+  var containmentElX = 0;
+  var containmentElY = 0;
 
   if (containment === 'window') {
     containmentElWidth = window.innerWidth;
@@ -333,11 +331,18 @@ __webpack_require__.r(__webpack_exports__);
     var parentElRect = currentEl.parentNode.getBoundingClientRect();
     containmentElWidth = parentElRect.width;
     containmentElHeight = parentElRect.height;
+    containmentElX = parentElRect.x;
+    containmentElY = parentElRect.y;
+    console.log(parentElRect);
   }
 
   return {
-    x: Math.max(Math.min(containmentElWidth - currentElWidth, x), 0),
-    y: Math.max(Math.min(containmentElHeight - currentElHeight, y), 0)
+    x: Math.max(Math.min(containmentElWidth - currentElWidth + containmentElX, x), containmentElX),
+    y: Math.max(Math.min(containmentElHeight - currentElHeight + containmentElY, y), containmentElY),
+    offset: {
+      x: containmentElX,
+      y: containmentElY
+    }
   };
 });
 
