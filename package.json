@@ -1,6 +1,6 @@
 {
-  "name": "@puzzlejs/react",
-  "version": "1.0.0",
+  "name": "@puzzlejs/react-ui",
+  "version": "0.0.1-beta",
   "description": "Open source React UI library",
   "main": "index.js",
   "browser": "index.js",
