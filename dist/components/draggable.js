@@ -223,8 +223,8 @@ function (_PureComponent) {
   }, {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
-      document.removeEventListener("mouseup", this.stopDrag);
-      document.removeEventListener("mousemove", this.onDrag);
+      window.removeEventListener("mouseup", this.stopDrag);
+      window.removeEventListener("mousemove", this.onDrag);
 
       if (this.handleElement) {
         this.handleElement.removeEventListener("mousedown", this.startDrag);
@@ -243,8 +243,8 @@ function (_PureComponent) {
       this.initialMouseX = event.pageX - this.state.x;
       this.initialMouseY = event.pageY - this.state.y;
       this.props.onDragStart(event, this.coordinates);
-      document.addEventListener("mouseup", this.stopDrag);
-      document.addEventListener("mousemove", this.onDrag);
+      window.addEventListener("mouseup", this.stopDrag);
+      window.addEventListener("mousemove", this.onDrag);
     }
   }, {
     key: "stopDrag",
@@ -255,8 +255,8 @@ function (_PureComponent) {
       this.initialMouseX = null;
       this.initialMouseY = null;
       this.props.onDragStop(event, this.coordinates);
-      document.removeEventListener("mouseup", this.stopDrag);
-      document.removeEventListener("mousemove", this.onDrag);
+      window.removeEventListener("mouseup", this.stopDrag);
+      window.removeEventListener("mousemove", this.onDrag);
     }
   }, {
     key: "onDrag",
